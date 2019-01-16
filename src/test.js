@@ -1,5 +1,5 @@
 import viteBridge from ".";
-const methods = ['appToken', 'appChannel', 'goLoginVC', 'goToshare', 'sendTranscation', 'fetchViteAddress'];
+const methods = ['appToken', 'appChannel', 'goLoginVC', 'goToshare', 'sendTranscation', 'fetchViteAddress', 'setWebTitle'];
 const sub = ['appStatus']
 const bridge = new viteBridge(() => {
     console.log('success-------ready 回调');
@@ -8,9 +8,8 @@ const bridge = new viteBridge(() => {
 
 function insertTpl(testKey) {
     const template = `<div class="tpl card ${testKey}">
-        <div class="title badge badge-secondary" style="height:30px;margin:10px auto;">test for ${ testKey} </div>
-        <div class="content" style="height:30px;margin:10px auto;border:1px solid #000;width:90%;"></div>
-        <button class="btn btn-primary" type="button" style="height:30px;margin:10px auto;">test</button>
+        <div class="title badge badge-secondary" style="height:30px;margin:10px auto;">bridge for ${ testKey} </div>
+        <button class="btn btn-primary" type="button" style="height:30px;margin:30px auto;">${ testKey}</button>
     </div>`
     $("#app").append(template)
 }
@@ -45,6 +44,10 @@ methods.forEach(m => {
     }
     if (m === 'fetchViteAddress') {
         arg = { data: "vite" }
+    }
+
+    if (m === 'setWebTitle') {
+        arg = { title: "ddddd" }
     }
     attachClickEvent(m, (contentEl) => {
         bridge[m](arg).then(res => {

@@ -4,6 +4,7 @@ const sub = ['appStatus']
 const bridge = new viteBridge(() => {
     console.log('success-------ready 回调');
 }, methods);
+const mockThis = { info: "i am mock 'thissss'" };
 
 
 function insertTpl(testKey) {
@@ -50,10 +51,12 @@ methods.forEach(m => {
         arg = { title: "ddddd" }
     }
     attachClickEvent(m, (contentEl) => {
-        bridge[m](arg).then(res => {
+        const success = function () {
             console.log(`${m} response success!!!!${JSON.stringify(res)}`)
+            console.log('test this context',this)
             contentEl.textContent = JSON.stringify(res);
-        }, rej => {
+        }
+        bridge[m](arg).then(success.bind(mockThis), rej => {
             console.log(`${m} response fail!!!!${rej}`)
         })
     })

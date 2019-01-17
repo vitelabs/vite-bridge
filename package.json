@@ -11,8 +11,7 @@
         "debugTest": "webpack",
         "build":"rm -rf dist && NODE_ENV=production webpack",
         "prerelease-alpha": "npm run build&& npm version prerelease",
-        "release-alpha": "npm publish --access-public --tag alpha",
-        "publish": "npm dist-tag add @vite/bridge@alpha latest"
+        "release-alpha": "npm publish --access-public --tag alpha"f
     },
     "author": "",
     "license": "ISC",

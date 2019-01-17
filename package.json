@@ -12,7 +12,7 @@
         "build": "rm -rf dist && NODE_ENV=production webpack",
         "prerelease-alpha": "npm run build&& npm version prerelease",
         "release-alpha": "npm publish --access-public --tag alpha",
-        "release-prod": "npm dist-tag add @vite/bridge@alpha lastest"
+        "release-prod": "npm dist-tag add @vite/bridge@alpha latest"
     },
     "author": "",
     "license": "ISC",

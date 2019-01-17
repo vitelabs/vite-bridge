@@ -24,6 +24,9 @@ export default class vitebridge {
         methods.forEach(m => {
             this[m] = (arg) => {
                 return new Promise((res, rej) => {
+                    if (!vitebridge._support) {
+                        rej("not support")
+                    }
                     setTimeout(() => {
                         rej("time out");
                     }, timeout)
@@ -53,10 +56,17 @@ export default class vitebridge {
             }
         })
     }
+    static get _support() {
+        return !!window.webkit;
+    }
     get _originBridge() {
         return window.WKWebViewJavascriptBridge
     }
     subscribe(eventName, cb) {
+        if (!vitebridge._support) {
+            console.error('bridge not supported');
+            return;
+        }
         if (typeof cb !== "function") {
             throw new Error("callback must be a function")
         }

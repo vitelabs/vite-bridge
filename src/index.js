@@ -1,6 +1,8 @@
-const methods = [];
+const builtInMethods = ['setWebTitle'];
+const timeout = 10000;
 export default class vitebridge {
-    constructor(readyCallback, methods = methods) {
+    constructor(readyCallback, selfDefinedMethods = builtInMethods, timeout = timeout) {
+        const methods = new Set(...selfDefinedMethods, ...builtInMethods);
         this._event = {};
         this._ready = false;
         this.registerHandlerCacheQueu = [];
@@ -8,10 +10,10 @@ export default class vitebridge {
         //-------------- ios init------
         const _readyCallback = (_bridge) => {
             this._ready = true;
-            this.callHandleCacheQueu.forEach(args=>{
+            this.callHandleCacheQueu.forEach(args => {
                 this._originBridge.callHandler(...args)
             })
-            this.registerHandlerCacheQueu.forEach(args=>{
+            this.registerHandlerCacheQueu.forEach(args => {
                 this._originBridge.registerHandler(...args)
             })
             typeof readyCallback === "function" && readyCallback(_bridge)
@@ -21,29 +23,32 @@ export default class vitebridge {
         // -----------------
         methods.forEach(m => {
             this[m] = (arg) => {
-                    return new Promise((res, rej) => {
-                        const callback=(function (res, rej) {
-                            return function (responseArgs) {
-                                const { code = 0, msg = "", data = null }=JSON.parse(responseArgs);
-                                //timeout todo
-                                if (code === 0) {
-                                    res(data)
-                                } else {
-                                    rej({ code, msg, data })
-                                }
+                return new Promise((res, rej) => {
+                    setTimeout(() => {
+                        rej("time out");
+                    }, timeout)
+                    const callback = (function (res, rej) {
+                        return function (responseArgs) {
+                            const { code = 0, msg = "", data = null } = JSON.parse(responseArgs);
+                            //timeout todo
+                            if (code === 0) {
+                                res(data)
+                            } else {
+                                rej({ code, msg, data })
                             }
-                        })(res, rej)
-                        console.log(99999,callback)
-                        const callHandlerArgs = [m, arg===undefined?"":JSON.stringify(arg), callback]
-                        if (!this._ready) {
-                            console.log(`call ${m} when not ready,${JSON.stringify(callHandlerArgs)}`)
-                            this.callHandleCacheQueu.push(callHandlerArgs)
-                        } else {
-                            console.log(`call ${m} when ready,${JSON.stringify(callHandlerArgs)}`)
-                            this._originBridge.callHandler(...callHandlerArgs)
                         }
+                    })(res, rej)
+                    console.log(99999, callback)
+                    const callHandlerArgs = [m, arg === undefined ? "" : JSON.stringify(arg), callback]
+                    if (!this._ready) {
+                        console.log(`call ${m} when not ready,${JSON.stringify(callHandlerArgs)}`)
+                        this.callHandleCacheQueu.push(callHandlerArgs)
+                    } else {
+                        console.log(`call ${m} when ready,${JSON.stringify(callHandlerArgs)}`)
+                        this._originBridge.callHandler(...callHandlerArgs)
+                    }
 
-                    })
+                })
 
 
             }
@@ -65,7 +70,7 @@ export default class vitebridge {
         if (!registered) {
             const registerHandlerArgs = [eventName, (args) => {
                 this._event[eventName].forEach(cb => {
-                    console.log('emitter',eventName,args)
+                    console.log('emitter', eventName, args)
                     cb(JSON.parse(args))
                 })
             }]

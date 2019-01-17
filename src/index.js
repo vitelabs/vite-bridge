@@ -1,8 +1,8 @@
 const builtInMethods = ['setWebTitle'];
-const timeout = 10000;
+const defaultTimeout = 10000;
 export default class vitebridge {
-    constructor({ readyCallback, selfDefinedMethods = builtInMethods, timeout = timeout } = { selfDefinedMethods: builtInMethods, timeout }) {
-        const methods = new Set(...selfDefinedMethods, ...builtInMethods);
+    constructor({ readyCallback, selfDefinedMethods = builtInMethods, timeout = defaultTimeout } = { selfDefinedMethods: builtInMethods, timeout: defaultTimeout }) {
+        const methods = new Set([...selfDefinedMethods, ...builtInMethods]);
         this._event = {};
         this._ready = false;
         this.registerHandlerCacheQueu = [];
@@ -38,7 +38,6 @@ export default class vitebridge {
                             }
                         }
                     })(res, rej)
-                    console.log(99999, callback)
                     const callHandlerArgs = [m, arg === undefined ? "" : JSON.stringify(arg), callback]
                     if (!this._ready) {
                         console.log(`call ${m} when not ready,${JSON.stringify(callHandlerArgs)}`)

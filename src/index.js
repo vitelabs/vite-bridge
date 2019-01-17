@@ -1,7 +1,7 @@
 const builtInMethods = ['setWebTitle'];
 const timeout = 10000;
 export default class vitebridge {
-    constructor(readyCallback, selfDefinedMethods = builtInMethods, timeout = timeout) {
+    constructor({readyCallback, selfDefinedMethods = builtInMethods, timeout = timeout}) {
         const methods = new Set(...selfDefinedMethods, ...builtInMethods);
         this._event = {};
         this._ready = false;

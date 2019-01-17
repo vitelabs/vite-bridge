@@ -1,9 +1,11 @@
 import viteBridge from "../src";
 const methods = ['appToken', 'appChannel', 'goLoginVC', 'goToshare', 'sendTranscation', 'fetchViteAddress'];
 const sub = ['appStatus']
-const bridge = new viteBridge(() => {
-    console.log('success-------ready 回调');
-}, methods);
+const bridge = new viteBridge({
+    readyCallback: () => {
+        console.log('success-------ready 回调');
+    }, selfDefinedMethods: methods
+});
 const mockThis = { info: "i am mock 'thissss'" };
 
 
@@ -53,7 +55,7 @@ methods.forEach(m => {
     attachClickEvent(m, (contentEl) => {
         const success = function () {
             console.log(`${m} response success!!!!${JSON.stringify(res)}`)
-            console.log('test this context',this)
+            console.log('test this context', this)
             contentEl.textContent = JSON.stringify(res);
         }
         bridge[m](arg).then(success.bind(mockThis), rej => {

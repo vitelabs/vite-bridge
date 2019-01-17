@@ -19,7 +19,7 @@ export default class vitebridge {
             typeof readyCallback === "function" && readyCallback(_bridge)
         }
         window.WKWVJBCallbacks = window.WKWVJBCallbacks || [_readyCallback];
-        window.webkit.messageHandlers.iOS_Native_InjectJavascript.postMessage(null);
+        window.webkit&&window.webkit.messageHandlers.iOS_Native_InjectJavascript.postMessage(null);
         // -----------------
         methods.forEach(m => {
             this[m] = (arg) => {

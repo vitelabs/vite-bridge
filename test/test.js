@@ -1,5 +1,5 @@
 import viteBridge from "../src";
-const methods = ['appToken', 'appChannel', 'goLoginVC', 'goToshare', 'sendTranscation', 'fetchViteAddress'];
+const methods = ['bridge.version','app.info', 'app.language', 'app.setWebTitle', 'app.share', 'wallet.currentAddress', 'wallet.sendTxByURI'];
 const sub = ['appStatus']
 const bridge = new viteBridge({
     readyCallback: () => {
@@ -11,9 +11,9 @@ const mockThis = { info: "i am mock 'thissss'" };
 
 function insertTpl(testKey) {
     const template = `<div class="tpl card ${testKey}">
-        <div class="title badge badge-secondary" style="height:30px;margin:10px auto;">test for ${ testKey} </div>
-        <div class="content" style="height:30px;margin:10px auto;border:1px solid #000;width:90%;"></div>
-        <button class="btn btn-primary" type="button" style="height:30px;margin:10px auto;">test</button>
+        <div class="container badge badge-secondary" style="height:30px;margin:10px auto; align="left">test for ${ testKey} </div>
+        <div class="content" style="height:100px;margin:10px auto;border:1px solid #000;width:90%;"></div>
+        <button class="btn btn-secondary" type="button" style="height:30px;margin:10px auto;">call</button>
     </div>`
     $("#app").append(template)
 }
@@ -53,7 +53,7 @@ methods.forEach(m => {
         arg = { title: "ddddd" }
     }
     attachClickEvent(m, (contentEl) => {
-        const success = function () {
+        const success = function (res) {
             console.log(`${m} response success!!!!${JSON.stringify(res)}`)
             console.log('test this context', this)
             contentEl.textContent = JSON.stringify(res);

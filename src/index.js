@@ -1,5 +1,4 @@
-const builtInMethods = ['setWebTitle'];
-const defaultTimeout = 10000;
+const builtInMethods = ['bridge.version','app.info', 'app.language', 'app.setWebTitle', 'app.share', 'wallet.currentAddress', 'wallet.sendTxByURI'];
 const initIos = function () {
     return new Promise((res, rej) => {
         const _readyCallback = (_bridge) => {
@@ -30,7 +29,7 @@ const initAndroid = function () {
 
                 //if in webview that dsBridge provided, call!
                 if (window._dsbridge) {
-                    ret = _dsbridge.call(method, arg)
+                    ret = window._dsbridge.call(method, arg)
                 } else if (window._dswk || navigator.userAgent.indexOf("_dsbridge") != -1) {
                     ret = prompt("_dsbridge=" + method, arg);
                 }
@@ -216,7 +215,7 @@ export default class vitebridge {
                             }
                         }
                     })(res, rej)
-                    const callHandlerArgs = [m, arg === undefined ? "" : JSON.stringify(arg), callback]
+                    const callHandlerArgs = [m, arg === undefined ? "" : arg, callback]
                     if (!this._ready) {
                         console.log(`call ${m} when not ready,${JSON.stringify(callHandlerArgs)}`)
                         this.callHandleCacheQueu.push(callHandlerArgs)
@@ -238,7 +237,7 @@ export default class vitebridge {
         return !!window.webkit
     }
     static get _inAndroidContainer() {
-        return !!window._dsf
+        return !!(window._dsbridge||window._dsf||navigator.userAgent.indexOf("_dsbridge") != -1)
     }
     get _originBridge() {
         if (vitebridge._inIosContainer) {

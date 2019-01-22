@@ -35,22 +35,17 @@ function attachSub(testKey, content) {
 methods.forEach(m => {
     insertTpl(m);
     let arg = undefined;
-    if (m === 'goToshare') {
+    if (m === 'app.share') {
         arg = { url: "https://baidu.com" }
     }
-    if (m === 'sendTranscation') {
-        arg = {
-            "token": '{"tokenId":"tti_5649544520544f4b454e6e40","tokenName":"Vite Token","tokenSymbol":"VITE","decimals":18}',
-            "toAddress": 'vite_53c1c34fe05835ac0becb0c4c6e0aaf67c356a935bc9a7d286',
-            "amount": "100",
-            "note": "test"
-        }
-    }
-    if (m === 'fetchViteAddress') {
+    if (m === 'wallet.currentAddress') {
         arg = { data: "vite" }
     }
     if (m === 'app.setWebTitle') {
         arg = { title: "ddddsetWebTitlesetWebTitlesetWebTitled" }
+    }
+    if(m==='wallet.sendTxByURI'){
+        arg={uri:"vite:vite_d9ab2af338a40d532442c883a2c7a54068064f6a58252beabb/?tti=tti_5649544520544f4b454e6e40&amount=11&data="}
     }
     attachClickEvent(m, (contentEl) => {
         const success = function (res) {
@@ -59,7 +54,8 @@ methods.forEach(m => {
             contentEl.textContent = JSON.stringify(res);
         }
         bridge[m](arg).then(success.bind(mockThis), rej => {
-            console.log(`${m} response fail!!!!${rej}`)
+            console.log(`${m} response fail!!!!${rej}`);
+            contentEl.textContent = JSON.stringify(rej);
         })
     })
 })

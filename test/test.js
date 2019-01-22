@@ -49,8 +49,8 @@ methods.forEach(m => {
     if (m === 'fetchViteAddress') {
         arg = { data: "vite" }
     }
-    if (m === 'setWebTitle') {
-        arg = { title: "ddddd" }
+    if (m === 'app.setWebTitle') {
+        arg = { title: "ddddsetWebTitlesetWebTitlesetWebTitled" }
     }
     attachClickEvent(m, (contentEl) => {
         const success = function (res) {

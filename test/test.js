@@ -45,7 +45,7 @@ methods.forEach(m => {
         arg = { title: "ddddsetWebTitlesetWebTitlesetWebTitled" }
     }
     if(m==='wallet.sendTxByURI'){
-        arg={uri:"vite:vite_d9ab2af338a40d532442c883a2c7a54068064f6a58252beabb/?tti=tti_5649544520544f4b454e6e40&amount=11&data="}
+        arg={uri:"vite:vite_d9ab2af338a40d532442c883a2c7a54068064f6a58252beabb/?tti=tti_5649544520544f4b454e6e40&amount=1&data="}
     }
     attachClickEvent(m, (contentEl) => {
         const success = function (res) {

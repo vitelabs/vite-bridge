@@ -241,10 +241,10 @@ export default class vitebridge {
         return !!window._dsf
     }
     get _originBridge() {
-        if (_inIosContainer) {
+        if (vitebridge._inIosContainer) {
             return window.WKWebViewJavascriptBridge
         }
-        if (_inAndroidContainer) {
+        if (vitebridge._inAndroidContainer) {
             return window.AndroidDSBridge
         }
         return null;

@@ -35,7 +35,7 @@ function attachSub(testKey, content) {
 methods.forEach(m => {
     insertTpl(m);
     let arg = undefined;
-    if (m === 'goToshare') {
+    if (m === 'app.share') {
         arg = { url: "https://baidu.com" }
     }
     if (m === 'sendTranscation') {

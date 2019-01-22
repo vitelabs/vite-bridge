@@ -216,7 +216,7 @@ export default class vitebridge {
                             }
                         }
                     })(res, rej)
-                    const callHandlerArgs = [m, arg === undefined ? "" : JSON.stringify(arg), callback]
+                    const callHandlerArgs = [m, arg === undefined ? "" : arg, callback]
                     if (!this._ready) {
                         console.log(`call ${m} when not ready,${JSON.stringify(callHandlerArgs)}`)
                         this.callHandleCacheQueu.push(callHandlerArgs)

@@ -8,7 +8,7 @@ const bridge = new viteBridge({
 });
 bridge["bridge.version"]()
 bridge["app.info"]()
-bridge["app.setWebTitle"]()
+bridge["app.setWebTitle"]({title:"dfadfa"})
 const mockThis = { info: "i am mock 'thissss'" };
 
 

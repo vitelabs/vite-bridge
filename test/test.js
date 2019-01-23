@@ -6,6 +6,9 @@ const bridge = new viteBridge({
         console.log('success-------ready 回调');
     }, selfDefinedMethods: methods
 });
+bridge["bridge.version"]()
+bridge["app.info"]()
+bridge["app.setWebTitle"]()
 const mockThis = { info: "i am mock 'thissss'" };
 
 

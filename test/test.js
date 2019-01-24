@@ -66,6 +66,6 @@ sub.forEach(s => {
     insertTpl(s);
     bridge.subscribe(s, function (reponse) {
         console.log('ffff')
-        attachSub(m, `${m} event has triggerd,reponse is \n ${JSON.stringify(reponse)}`)
+        attachSub(s, `${s} event has triggerd,reponse is \n ${JSON.stringify(reponse)}`)
     })
 })

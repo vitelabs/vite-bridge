@@ -1,6 +1,6 @@
 import viteBridge from "../src";
 const methods = ['bridge.version','app.info', 'app.language', 'app.setWebTitle', 'app.share', 'wallet.currentAddress', 'wallet.sendTxByURI'];
-const sub = ['appStatus']
+const sub = ['shakeGesture']
 const bridge = new viteBridge({
     readyCallback: () => {
         console.log('success-------ready 回调');
@@ -33,7 +33,7 @@ function attachClickEvent(testKey, clickEvent) {
 function attachSub(testKey, content) {
     const ele = document.getElementsByClassName(testKey)[0];
     const contentEl = ele.getElementsByClassName("content")[0];
-    contentEl.textContent = content;
+    contentEl.textContent = contentEl.textContent+content;
 }
 methods.forEach(m => {
     insertTpl(m);

@@ -2,7 +2,7 @@
 
 ### Quick start   
 
-#### Installition  
+#### Installation  
 
 Install using [npm](https://www.npmjs.org/):
 

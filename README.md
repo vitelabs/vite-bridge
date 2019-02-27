@@ -62,14 +62,17 @@ bridge.unSubscribe(eventName, cb)
  | cb | Function | event handler| 
 
 #### Detail method and event can be found here:
-- common error code :
-1	未知错误
-2	无效参数	
-3	网络错误	
-4	登录错误	
-5	传入的 address 和当前 钱包选择的 address 不一致	
+- common error code :  
+  
+| error code | desc |
+| --- | --- |
+| 1	| 未知错误 | 
+| 2	| 无效参数	|
+| 3	| 网络错误 |	
+| 4	| 登录错误	|
+| 5	| 传入的 address 和当前 钱包选择的 address 不一致|
 
-- wallet.sendTxByURI possible error code    
+- method wallet.sendTxByURI possible error code    
   
 | error code | desc |
 | --- | --- |

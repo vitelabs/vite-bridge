@@ -66,21 +66,21 @@ bridge.unSubscribe(eventName, cb)
   
 | error code | desc |
 | --- | --- |
-| 1	| 未知错误 | 
-| 2	| 无效参数	|
-| 3	| 网络错误 |	
-| 4	| 登录错误	|
-| 5	| 传入的 address 和当前 钱包选择的 address 不一致|
+| 1	| unknown error | 
+| 2	| invalidate params	|
+| 3	| network error |	
+| 4	| login error	|
+| 5	| address in params not identical to current address|
 
 - method wallet.sendTxByURI possible error code    
   
 | error code | desc |
 | --- | --- |
-| 4001 | 上一次交易未完成，又提交一次交易 |
-| 4002	| 未找到tokenId对应的 tokenInfo	|
-| 4003	| amount 格式错误，比如不支持小数点的 token ，却加了小数点，通用的解释是将amount 转为最小单位的值后，还存在小数点	|
-| 4004 |	用户中途放弃交易（身份校验放弃，POW 放弃等）|
-| 任何负数错误码 |	直接用 message 展示就可以，客户端本地已经做了 |
+| 4001 | duplicate transaction before last transaction finished |
+| 4002	| cannot find related tokenId	|
+| 4003	| amount format error (should be translate to min unit)	|
+| 4004 | user suspend|
+| any minus | show the message , we have handled it |
 
 methods :
 | namespace | function name | params | return data|

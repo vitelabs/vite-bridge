@@ -39,7 +39,7 @@ options
 #### Instance Methods
 - A native methods shoud be called like this:
 ```javascript
-bridge[methodname](...args)
+bridge[namespace.methodname](...args)
 ```
 Currently, bridge supports async function call only.
 Each calling will return an `Promise`,which resolve with the function data or reject whith object:

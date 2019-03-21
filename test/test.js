@@ -1,5 +1,5 @@
 import viteBridge from "../src";
-const methods = ['bridge.version','app.info', 'app.language', 'app.setWebTitle', 'app.share', 'wallet.currentAddress', 'wallet.sendTxByURI'];
+const methods = ['bridge.version','app.info', 'app.language', 'app.setWebTitle', 'app.share', 'wallet.currentAddress', 'wallet.sendTxByURI','pri.encryption'];
 const sub = ['shakeGesture']
 const bridge = new viteBridge({
     readyCallback: () => {
@@ -49,6 +49,9 @@ methods.forEach(m => {
     }
     if(m==='wallet.sendTxByURI'){
         arg={uri:"vite:vite_d9ab2af338a40d532442c883a2c7a54068064f6a58252beabb/?tti=tti_5649544520544f4b454e6e40&amount=1&data="}
+    }
+    if(m==='pri.encryption'){
+        arg={uri:"smt","test":"ffff"}
     }
     attachClickEvent(m, (contentEl) => {
         const success = function (res) {

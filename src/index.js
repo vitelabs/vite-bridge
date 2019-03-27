@@ -266,7 +266,7 @@ export default class vitebridge {
             const registerHandlerArgs = [eventName, (args) => {
                 this._event[eventName].forEach(cb => {
                     console.log('emitter', eventName, args)
-                    cb(JSON.parse(args))
+                    cb(args)
                 })
             }]
             if (this._ready) {

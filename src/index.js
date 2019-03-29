@@ -1,4 +1,4 @@
-const builtInMethods = ['bridge.version','app.info', 'app.language', 'app.setWebTitle', 'app.share', 'wallet.currentAddress', 'wallet.sendTxByURI'];
+const builtInMethods = ['bridge.version','app.info', 'app.language', 'app.setWebTitle', 'app.share', 'wallet.currentAddress', 'wallet.sendTxByURI','pri.encryption', 'app.setRRButton'];
 const initIos = function () {
     return new Promise((res, rej) => {
         const _readyCallback = (_bridge) => {
@@ -170,6 +170,7 @@ export default class vitebridge {
         const _ready = (_bridge) => {
             this._ready = true;
             this.callHandleCacheQueu.forEach(args => {
+                console.log('callllll ',args)
                 _bridge.callHandler(...args)
             })
             this.registerHandlerCacheQueu.forEach(args => {

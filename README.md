@@ -12,7 +12,7 @@ npm install @vite/bridge
 
 #### Hello world
 ```javascript
-import Bridge from '@vite/brodge';
+import Bridge from '@vite/bridge';
 const bridge=new Bridge(options);
 bridge['bridge.version']().then(
     data=>{

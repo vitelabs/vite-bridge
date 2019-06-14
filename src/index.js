@@ -170,7 +170,6 @@ export default class vitebridge {
         const _ready = (_bridge) => {
             this._ready = true;
             this.callHandleCacheQueu.forEach(args => {
-                console.log('callllll ',args)
                 _bridge.callHandler(...args)
             })
             this.registerHandlerCacheQueu.forEach(args => {

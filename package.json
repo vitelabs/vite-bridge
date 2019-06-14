@@ -1,31 +1,35 @@
 {
-    "name": "@vite/bridge",
-    "version": "1.0.13-5",
-    "description": "",
-    "main": "dist/index.js",
-    "directories": {
-        "test": "test"
-    },
-    "scripts": {
-        "debugLocal": "webpack-dev-server",
-        "debugTest": "webpack",
-        "build": "rm -rf dist && NODE_ENV=production webpack",
-        "prerelease-alpha": "npm run build&& npm version prerelease",
-        "release-alpha": "npm publish --access-public --tag alpha",
-        "release-prod": "npm dist-tag add @vite/bridge@alpha latest"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "@babel/core": "^7.2.2"
-    },
-    "devDependencies": {
-        "html-webpack-plugin": "^3.2.0",
-        "webpack": "^4.28.4",
-        "webpack-cli": "^3.2.1",
-        "webpack-dev-server": "^3.1.14",
-        "webpack-merge": "^4.2.1",
-        "@babel/preset-env": "^7.2.3",
-        "babel-loader": "^8.0.5"
-    }
+  "name": "@vite/bridge",
+  "version": "1.0.13-5",
+  "description": "",
+  "main": "dist/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "debugLocal": "webpack-dev-server",
+    "debugTest": "webpack",
+    "build": "rm -rf dist && NODE_ENV=production webpack",
+    "prerelease-alpha": "npm run build&& npm version prerelease",
+    "release-alpha": "npm publish --access-public --tag alpha",
+    "release-prod": "npm dist-tag add @vite/bridge@alpha latest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vitelabs/bridge"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "^4.2.1",
+    "@babel/preset-env": "^7.2.3",
+    "babel-loader": "^8.0.5"
+  }
 }

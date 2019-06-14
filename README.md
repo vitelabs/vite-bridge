@@ -91,4 +91,4 @@ methods :
 | app | setWebTitle | {title:"example title"} |
 | app | share | {"url": "https://google.com" }|
 | wallet | currentAddress | params | "vite_XXXXXXXXXX"|
-| wallet | sendTxByURI | {"uri":"[string of vite uri schema](https://vite.wiki/api/vitejs/utils/tools.html#uristringify) "} | the block generated|
+| wallet | sendTxByURI | {"uri":"[string of vite uri schema](https://vite.wiki/api/vitejs/tool/utils.html#uristringify) "} | the block generated|

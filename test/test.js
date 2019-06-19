@@ -1,6 +1,6 @@
 import viteBridge from "../src";
-const methods = ['bridge.version', 'app.info', 'app.language', 'app.setWebTitle', 'app.share', 'wallet.currentAddress', 'wallet.sendTxByURI', 'pri.encryption', 'app.setRRButton'];
-const sub = ['shakeGesture', 'nav.RRBtnClick']
+const methods = ['bridge.version', 'app.info', 'app.language', 'app.setWebTitle', 'app.share', 'wallet.currentAddress', 'wallet.sendTxByURI', 'pri.encryption', 'app.setRRButton','pri.open','pri.receiveAirdrop'];
+const sub = ['shakeGesture', 'nav.RRBtnClick','page.onShow']
 const bridge = new viteBridge({
     readyCallback: () => {
         console.log('success-------ready 回调');
@@ -17,6 +17,8 @@ bridge["app.setWebTitle"]({ title: "dfadfa" }).then(n=>{
 })
 const mockThis = { info: "i am mock 'thissss'" };
 const argsMap = {
+    'pri.receiveAirdrop':{tokenId:'tti_5649544520544f4b454e6e40'},
+    'pri.open':{url:'https://x.vite.net/walletQuota'},
     'app.share': { url: "https://baidu.com" },
     'wallet.currentAddress': { data: "vite" },
     'app.setWebTitle': { title: "ddddsetWebTitlesetWebTitlesetWebTitled" },

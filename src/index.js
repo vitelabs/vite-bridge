@@ -1,4 +1,4 @@
-const builtInMethods = ['bridge.version','app.info', 'app.language', 'app.setWebTitle', 'app.share', 'wallet.currentAddress', 'wallet.sendTxByURI','pri.encryption', 'app.setRRButton'];
+const builtInMethods = ['bridge.version','app.info', 'app.language', 'app.setWebTitle', 'app.share', 'wallet.currentAddress', 'wallet.sendTxByURI','pri.encryption', 'app.setRRButton','pri.open','pri.receiveAirdrop'];
 const initIos = function () {
     return new Promise((res, rej) => {
         const _readyCallback = (_bridge) => {

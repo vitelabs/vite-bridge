@@ -1,6 +1,6 @@
 import viteBridge from "../src";
 const methods = ['bridge.version', 'app.info', 'app.language', 'app.setWebTitle', 'app.share', 'wallet.currentAddress', 'wallet.sendTxByURI', 'pri.encryption', 'app.setRRButton','pri.open','pri.receiveAirdrop'];
-const sub = ['shakeGesture', 'nav.RRBtnClick','page.onShow']
+const sub = ['shakeGesture', 'nav.RRBtnClick','page.onShow','app.didBecomeActive']
 const bridge = new viteBridge({
     readyCallback: () => {
         console.log('success-------ready 回调');
@@ -14,6 +14,10 @@ bridge["app.info"]().then(n=>{
 })
 bridge["app.setWebTitle"]({ title: "dfadfa" }).then(n=>{
     console.log('call for 3')
+})
+let address=null;
+bridge['wallet.currentAddress'].then(data=>{
+    address=data;
 })
 const mockThis = { info: "i am mock 'thissss'" };
 const argsMap = {
@@ -60,9 +64,11 @@ methods.forEach(m => {
         try {
             arg = inputEl.value.trim() ? JSON.parse(inputEl.value.trim()) : arg
         } catch (e) {
-            alert(JSON.stringify(e.message))
+            contentEl.textContent(JSON.stringify(e.message))
         }
-
+        
+        if(m==='wallet.sendTxByURI'){arg=Object.assign({address},arg||{})};
+        if(!arg.address){contentEl.textContent('missing address params')};
         const success = function (res) {
             console.log(`${m} response success!!!!${JSON.stringify(res)}`)
             console.log('test this context', this)

@@ -53,8 +53,8 @@ Each calling will return a `Promise`,which resolve with the function data or rej
 ```
 - or use `ubscribe/unSubscribe` to receive/unreceive event from native
 ```javascript 
-bridge.subscribe(eventName, cb)
-bridge.unSubscribe(eventName, cb)
+bridge.subscribe(namespace.eventName, cb)
+bridge.unSubscribe(namespace.eventName, cb)
 ```
  | Params | Type | Description |
  | --- | --- | --- |
@@ -91,4 +91,4 @@ methods :
 | app | setWebTitle | {title:"example title"} |
 | app | share | {"url": "https://google.com" }|
 | wallet | currentAddress | params | "vite_XXXXXXXXXX"|
-| wallet | sendTxByURI | {"uri":"[string of vite uri schema](https://vite.wiki/api/vitejs/tool/utils.html#uristringify) "} | the block generated|
+| wallet | sendTxByURI | {"uri":"[string of vite uri schema](https://vite.wiki/api/vitejs/tool/utils.html#uristringify) ","address":"self vite address"} | the block generated|

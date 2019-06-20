@@ -16,7 +16,7 @@ bridge["app.setWebTitle"]({ title: "dfadfa" }).then(n=>{
     console.log('call for 3')
 })
 let address=null;
-bridge['wallet.currentAddress'].then(data=>{
+bridge['wallet.currentAddress']().then(data=>{
     address=data;
 })
 const mockThis = { info: "i am mock 'thissss'" };

@@ -18,7 +18,7 @@ const handleCallContract = () => {
     "Vote"
   );
   const base64Data = utils._Buffer.from(hexData, "hex").toString("base64");
-  const p=bridge["wallet.currentAddress"]()
+  bridge["wallet.currentAddress"]()
     .then(addr => {
       bridge["wallet.sendTxByURI"]({
         address: addr,

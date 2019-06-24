@@ -1,7 +1,7 @@
 import Bridge from "@vite/bridge";
 import { abi, utils, constant } from "@vite/vitejs";
 
-const { Snapshot_Gid, Vote_Addr, Vote_Abi } = constant;
+const { Snapshot_Gid, Vote_Addr:Vote_Contract_Addr, Vote_Abi } = constant;
 const nodeName = "DreamFund";
 const sendViteAddr = "vite_c7120abaf4cd14688b7d70c45fdd46cf6e27bd36535eb0c321";
 
@@ -23,7 +23,7 @@ const handleCallContract = () => {
       bridge["wallet.sendTxByURI"]({
         address: addr,
         uri: utils.uriStringify({
-          target_address: Vote_Addr,
+          target_address: Vote_Contract_Addr,
           function_name: "Vote",
           params: { data: base64Data }
         })

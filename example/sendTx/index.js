@@ -8,7 +8,6 @@ const sendViteAddr = "vite_c7120abaf4cd14688b7d70c45fdd46cf6e27bd36535eb0c321";
 const bridge = new Bridge();
 
 const handleCallContract = () => {
-    console.log(9999)
   const inputNodeName =
     $("#vote_input")
       .val()
@@ -33,7 +32,6 @@ const handleCallContract = () => {
       });
     })
     .catch(e => toast(`投票失败,${e.message || JSON.stringify(e)}`));
-    console.log(88888,p)
 };
 
 const handleSendTx = () => {

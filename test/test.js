@@ -69,6 +69,7 @@ function insertTpl(testKey, isSub) {
     </div>`;
   $("#app").append(template);
 }
+
 function attachClickEvent(testKey, clickEvent) {
   const ele = document.getElementsByClassName(
     testKey.toLowerCase().replace(".", "-")
@@ -97,7 +98,7 @@ methods.forEach(m => {
     try {
       arg = inputEl.value.trim() ? JSON.parse(inputEl.value.trim()) : arg;
     } catch (e) {
-      contentEl.textContent(JSON.stringify(e.message));
+      contentEl.textContent=JSON.stringify(e.message);
     }
 
     if (m === "wallet.sendTxByURI") {
@@ -128,3 +129,31 @@ sub.forEach(s => {
     );
   });
 });
+
+function attachAnyMethodClickEvent() {
+  const ele = document.getElementsByClassName('test-any')[0];
+  const methodNameEl=ele.getElementsByClassName("method-name")[0]
+  const contentEl = ele.getElementsByClassName("content")[0];
+  const button = ele.getElementsByClassName("btn")[0];
+  const inputEl = ele.getElementsByClassName("ipt")[0];
+
+  button.addEventListener("click", () => {
+    console.log(`trigger anyMethod's click event`);
+      try {
+        var methodName=methodNameEl.value.trim()
+        var arg =JSON.parse(inputEl.value.trim());
+      } catch (e) {
+        contentEl.textContent=JSON.stringify(e.message);
+      }
+      const success = function(res) {
+        console.log(` response success!!!!${JSON.stringify(res)}`);
+        console.log("test this context", this);
+        contentEl.textContent = JSON.stringify(res);
+      };
+      bridge.callAnyway(methodName,arg).then(success.bind(mockThis), rej => {
+        console.log(` response fail!!!!${rej}`);
+        contentEl.textContent = JSON.stringify(rej.message||rej);
+      });
+  });
+}
+attachAnyMethodClickEvent()

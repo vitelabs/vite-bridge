@@ -1,7 +1,7 @@
 {
   "name": "@vite/bridge",
   "version": "1.0.14",
-  "description": "",
+  "description": "vite javascript bridge",
   "main": "dist/index.js",
   "directories": {
     "test": "test"
@@ -17,7 +17,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/core": "^7.2.2"
+    "@babel/core": "^7.2.2",
+    "@vite/vitejs-abi": "^2.2.10",
+    "@vite/vitejs-utils": "^2.2.10"
   },
   "repository": {
     "type": "git",

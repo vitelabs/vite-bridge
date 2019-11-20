@@ -4,12 +4,16 @@ const builtInMethods = [
   "app.language",
   "app.setWebTitle",
   "app.share",
+  "app.scan",
   "wallet.currentAddress",
   "wallet.sendTxByURI",
   "pri.encryption",
   "app.setRRButton",
   "pri.open",
-  "pri.receiveAirdrop"
+  "pri.sendTx",
+  "pri.receiveAirdrop",
+  "pri.saveVitexInviteCode",
+  "pri.readVitexInviteCode"
 ];
 const initIos = function() {
   return new Promise((res, rej) => {

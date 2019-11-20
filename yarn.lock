@@ -588,6 +588,16 @@
   resolved "https://registry.npm.taobao.org/@types/q/download/@types/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha1-aQoUdbhPKohP0HzXl8APXzE1bqg=
 
+"@vite/vitejs-abi@^2.2.10":
+  version "2.2.10"
+  resolved "https://registry.npm.taobao.org/@vite/vitejs-abi/download/@vite/vitejs-abi-2.2.10.tgz#214c82f844126011868d6b84b3b43e5454e50419"
+  integrity sha1-IUyC+EQSYBGGjWuEs7Q+VFTlBBk=
+
+"@vite/vitejs-utils@^2.2.10":
+  version "2.2.10"
+  resolved "https://registry.npm.taobao.org/@vite/vitejs-utils/download/@vite/vitejs-utils-2.2.10.tgz#e1586ea30eee8deb86a7a94f32250a90eb4dacff"
+  integrity sha1-4Vhuow7ujeuGp6lPMiUKkOtNrP8=
+
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"
   resolved "http://registry.npm.taobao.org/@webassemblyjs/ast/download/@webassemblyjs/ast-1.7.11.tgz#b988582cafbb2b095e8b556526f30c90d057cace"

@@ -2,65 +2,77 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>Hello, world!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+    <meta name="apple-itunes-app" content="app-id=1437629486">
+    <title>Vite bridge</title>
+    <style>
+        body {
+            margin:0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: #eee;
+        }
+        .content{
+            min-height: 100px;
+            border: 1px solid #ccc;
+            word-break: break-all;
+            padding: 6px;
+        }
+        .tpl {
+            background: #fff;
+            padding: 20px;
+        }
+        .tpl + .tpl {
+            margin-top: 10px;
+        }
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            display: block;
+            min-width: 10em;
+            border: 0;
+            margin: 10px auto 0;
+            background: #ddd;
+        }
+        input, textarea {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            line-height: 1.5;
+            outline: 0;
+            padding: 6px;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .tpl .title{
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 2;
+        }
+    </style>
 </head>
 
 <body>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-
     <div id="app">
-        <div class="tpl card test-any">
-        <div class="container badge badge-secondary title" style="height:30px;margin:10px auto;">test for anyMethod </div>
-        <input type="text" class="method-name">
-        <textarea type=text class="ipt"></textarea>
-        <div class="content" style="height:100px;margin:10px auto;border:1px solid #000;width:90%;"></div>
-        <button class="btn btn-secondary" type="button" style="margin:10px auto;">call</button>'
-    </div>
-    </div>
-<script src="test.js"></script>
-</body>
-<style>
-body{
-    margin:0;
-}
-#app>:nth-child(2n+1){
-    background-color: #ffccc7;
-}
-#app>:nth-child(2n){
-    background-color:#bae7ff;
-}
-.tpl .ipt{
-    margin:5px 20px;
-    display: block;
-    border:1px solid #ccc;
-}
-.tpl .content{
-    background-color:#fff;
-    min-height: 100px;
-    overflow-y:scroll;
-}
-.tpl {
-    text-align: center;
-    vertical-align: middle;
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-    margin: 10px 0;
-}
-.tpl button{
-    font-size: 16px;
-    background-color:antiquewhite;
-    padding:10px 20px;
-}
-.tpl .title{
-    font-size: 18px;
-    font-weight: 600;
-}
-</style>
+        <div class="tpl" id="any">
+            <div class="title">anyMethod</div>
+            <input type="text" placeholder="method name" id="method_name">
+            <textarea placeholder="params" rows="2"></textarea>
+            <div class="content"></div>
+            <button type="button">call</button>
+        </div>
 
+        <div class="tpl" id="bug">
+            <div class="title">bind invite code</div>
+            <textarea rows="1" placeholder="invite code">123456</textarea>
+            <div class="content"></div>
+            <button type="button">call</button>
+        </div>
+    </div>
+    <script src="test.js"></script>
+</body>
 </html>

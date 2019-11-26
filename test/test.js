@@ -1,3 +1,6 @@
+document.getElementById('agent').innerHTML = navigator.userAgent
+document.getElementById('lang').innerHTML = navigator.language
+
 import * as viteUtils from "@vite/vitejs-utils";
 import * as viteABI from "@vite/vitejs-abi";
 import viteBridge from "../src";

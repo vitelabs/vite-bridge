@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "target": "es6",
+    "module": "esnext",
+    "noEmit": true,
+    "sourceMap": false,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+      "es2015.symbol"
+    ],
+    "declaration": true,
+    "noEmitOnError": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "strict": false,
+    "alwaysStrict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": false,
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src/*"
+  ]
+}

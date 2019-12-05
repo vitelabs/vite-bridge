@@ -1,38 +1,38 @@
 {
   "name": "@vite/bridge",
-  "version": "1.0.14",
+  "version": "2.0.0",
   "description": "vite javascript bridge",
-  "main": "dist/index.js",
+  "author": "vitelabs",
   "directories": {
     "test": "test"
-  },
-  "scripts": {
-    "debugLocal": "webpack-dev-server",
-    "debugTest": "webpack",
-    "build": "rm -rf dist && NODE_ENV=production webpack",
-    "prerelease-alpha": "npm run build&& npm version prerelease",
-    "release-alpha": "npm publish --access-public --tag alpha",
-    "release-prod": "npm dist-tag add @vite/bridge@alpha latest"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@babel/core": "^7.2.2",
-    "@vite/vitejs-abi": "^2.2.10",
-    "@vite/vitejs-utils": "^2.2.10"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/vitelabs/bridge"
   },
+  "homepage": "https://github.com/vitelabs/bridge",
+  "bugs": {
+    "url": "https://github.com/vitelabs/bridge/issues"
+  },
+  "main": "dist/bridge.js",
+  "module": "dist/bridge.mjs",
+  "types": "dist/index.d.ts",
   "devDependencies": {
-    "@babel/preset-env": "^7.2.3",
-    "babel-loader": "^8.0.5",
-    "cssnano": "^4.1.10",
-    "html-webpack-plugin": "^3.2.0",
-    "webpack": "^4.28.4",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14",
-    "webpack-merge": "^4.2.1"
-  }
+    "rollup": "^1.27.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript2": "^0.25.2",
+    "typescript": "^3.7.2"
+  },
+  "scripts": {
+    "clean": "rm -rf dist/*",
+    "build": "npm run clean && NODE_ENV=production node build/prod.js",
+    "dev": "NODE_ENV=development node build/dev.js"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "license": "ISC"
 }

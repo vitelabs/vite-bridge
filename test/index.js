@@ -1,9 +1,10 @@
 document.getElementById('agent').innerHTML = navigator.userAgent
 document.getElementById('lang').innerHTML = navigator.language
 
-import * as viteUtils from "@vite/vitejs-utils";
-import * as viteABI from "@vite/vitejs-abi";
-import viteBridge from "../src";
+window.onerror = err => {
+  // document.body.innerHTML = JSON.stringify(err)
+}
+
 const methods = {
   "bridge.version": {
     params: false,
@@ -34,14 +35,12 @@ const methods = {
     autorun: false,
   },
   "wallet.currentAddress": {
-    params: {
-      data: "vite"
-    },
+    params: false,
     autorun: true,
   },
   "wallet.sendTxByURI": {
     params: {
-      uri: "vite:vite_67a797f249753fa07cd76b07530e7a1f96d070a8ade463ebe5?tti=tti_5649544520544f4b454e6e40&amount=1&data="
+      uri: "vite:vite_67a797f249753fa07cd76b07530e7a1f96d070a8ade463ebe5?tti=tti_5649544520544f4b454e6e40&amount=1"
     },
     autorun: false,
   },
@@ -78,7 +77,35 @@ const methods = {
   "pri.readVitexInviteCode": {
     params: false,
     autorun: true,
-  }
+  },
+  'pri.addFavPair': {
+    params: {
+      symbol: 'CSTT-000_VITE'
+    },
+    autorun: false,
+  },
+  'pri.deleteFavPair': {
+    params: {
+      symbol: 'CSTT-000_VITE'
+    },
+    autorun: false
+  },
+  'pri.getAllFavPairs': {
+    params: false,
+    autorun: false,
+  },
+  'pri.switchPair': {
+    params: {
+      symbol: 'CSTT-000_VITE'
+    },
+    autorun: false
+  },
+  'pri.transferAsset': {
+    params: {
+      tokenId: 'tti_5649544520544f4b454e6e40'
+    },
+    autorun: false
+  },
 }
 const sub = [
   "shakeGesture",
@@ -86,16 +113,14 @@ const sub = [
   "page.onShow",
   "app.didBecomeActive"
 ];
-const bridge = new viteBridge({
-  readyCallback: () => {
-    console.log("success-------ready 回调");
-  },
-  selfDefinedMethods: Object.keys(methods)
-});
+const bridge = new ViteBridge();
 
 let address = null;
 bridge["wallet.currentAddress"]().then(data => {
   address = data;
+  // document.body = data
+}, err => {
+  // document.body = JSON.stringify(err)
 });
 
 const mockThis = {
@@ -166,12 +191,9 @@ for (const method in methods) {
       }
     }
     const success = function (res) {
-      console.log(`${method} response success!!!!${JSON.stringify(res)}`);
-      console.log("test this context", this);
       contentEl.textContent = JSON.stringify(res);
     };
     bridge[method](arg).then(success.bind(mockThis), rej => {
-      console.log(`${method} response fail!!!!${rej}`);
       contentEl.textContent = JSON.stringify(rej);
     });
   }, config.autorun);
@@ -214,47 +236,3 @@ function attachAnyMethodClickEvent() {
   });
 }
 attachAnyMethodClickEvent()
-
-function testBug() {
-  const tpl = document.getElementById('bug')
-  const code = tpl.querySelector('textarea')
-  const content = tpl.querySelector('.content')
-
-  const button = tpl.querySelector('button')
-  button.addEventListener('click', () => {
-    bridge['pri.saveVitexInviteCode']({
-      code: code.value,
-    }).then(res => {
-      console.log('save_code', JSON.stringify(res))
-    }, err => {
-      console.error('save_code', JSON.stringify(err))
-    })
-
-    const hexData = viteABI.encodeFunctionCall({
-      type: "function",
-      name: "BindInviteCode",
-      inputs: [
-        {
-          name: "code",
-          type: "uint32"
-        }
-      ]
-    }, [code.value * 1]);
-    const base64Data = viteUtils._Buffer
-      .from(hexData, "hex")
-      .toString("base64");
-    bridge["pri.sendTx"]({
-      block: {
-        data: base64Data,
-        amount: '0',
-        tokenId: 'tti_5649544520544f4b454e6e40',
-        toAddress: 'vite_0000000000000000000000000000000000000006e82b8ba657'
-      }
-    }).then(res => {
-      content.textContent = JSON.stringify(res)
-    }, err => {
-      content.textContent = JSON.stringify(err)
-    })
-  }, false)
-}
-testBug()

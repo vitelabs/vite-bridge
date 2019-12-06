@@ -2,6 +2,7 @@
 
 A javascript bridge between native & web, can be used in web page in [Vite App](http://vite.org/products#wallet).
 
+v1.x require `Promise`, v2.x require `Promise`, `Symbol`, check your target browser version, use polyfill if need.
 
 v2.0.x require Vite App version **3.2.0** and above.
 
@@ -96,8 +97,8 @@ You can use static properties like `Bridge.enabled`
 | --- | --- | --- | --- |
 | enabled | boolean | is in vite app | **added in version 2.0.0** |
 | _support | Boolean | is supported | **deprecated in version 2.0.0** |
-| _inIosContainer | Boolean | is in iOS system ｜ **deprecated in version 2.0.0** |
-| _inAndroidContainer | Boolean | is in Android system ｜ **deprecated in version 2.0.0** |
+| _inIosContainer | Boolean | is in iOS system | **deprecated in version 2.0.0** |
+| _inAndroidContainer | Boolean | is in Android system | **deprecated in version 2.0.0** |
 
 
 ### Instance Methods

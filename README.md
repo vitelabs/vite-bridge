@@ -6,6 +6,8 @@ v1.x require `Promise`, v2.x require `Promise`, `Symbol`, check your target brow
 
 v2.0.x require Vite App version **3.2.0** and above.
 
+**Debug Page**: https://vitelabs.github.io/vite-bridge/index.html
+
 ## Quick start
 ```js
 import Bridge from '@vite/bridge'
